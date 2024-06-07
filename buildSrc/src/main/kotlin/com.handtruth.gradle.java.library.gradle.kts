@@ -1,9 +1,7 @@
-import org.gradle.kotlin.dsl.`maven-publish`
-
 plugins {
     id("com.handtruth.gradle.java")
+    id("com.handtruth.gradle.publish")
     `java-library`
-    `maven-publish`
 }
 
 java {
@@ -13,8 +11,9 @@ java {
 
 publishing {
     publications {
-        create<MavenPublication>("main") {
+        val publication = create<MavenPublication>("main") {
             from(components["java"])
         }
+        gradle.allPublications.add(publication)
     }
 }

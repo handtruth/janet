@@ -11,5 +11,6 @@ fun submodule(name: String) {
     project(":$projectName").projectDir = file("modules/$name")
 }
 
+submodule("bom")
 submodule("core")
 submodule("platform")
